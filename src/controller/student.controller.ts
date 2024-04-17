@@ -1,5 +1,5 @@
 import { IId } from '../interfaces/global.interface';
-import { IStudentCreate, IStudentUpdate } from '../interfaces/IStudent';
+import { IStudentCreate, IStudentUpdate } from '../interfaces/IStudent.interface';
 import studentService from '../services/student.service';
 import { RequestAll, RequestBody, RequestParams, ResponseEntity } from '../utils/Http';
 

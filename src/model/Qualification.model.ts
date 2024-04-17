@@ -1,11 +1,14 @@
 import mongoose from 'mongoose';
+import { IQualification } from '../interfaces/IQualification.interface';
 
-const QualificationSchema = new mongoose.Schema({
+const QualificationSchema = new mongoose.Schema<IQualification>({
   student: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Student'
   },
-  grades:[
+  grade: String,
+  section: String,
+  notas:[
     {
         area:{
             type:mongoose.Schema.Types.ObjectId,
@@ -17,12 +20,16 @@ const QualificationSchema = new mongoose.Schema({
                     type:mongoose.Schema.Types.ObjectId,
                     ref:'Competence'
                 },
-                grade:{
+                periodo:{
+                    type:mongoose.Schema.Types.ObjectId,
+                    ref:'Periodo'
+                },
+                nota:{
                     type:Number
                 }
             }
         ],
-        average:{
+        promedio:{
             type:Number
         }
     }

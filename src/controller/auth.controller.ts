@@ -3,11 +3,11 @@ import { ICredentialsLogin, ICredentialsRegister } from '../interfaces/IAuth.int
 import authService from '../services/auth.service';
 
 export async function login(req: RequestBody<ICredentialsLogin>, res: ResponseEntity) {
-  const token = authService.login(req.body);
+  const token = await authService.login(req.body);
   res.json(token);
 }
 export async function register(req: RequestBody<ICredentialsRegister>, res: ResponseEntity) {
-  const token = authService.register(req.body);
+  const token = await authService.register(req.body);
   res.json(token);
 }
 

@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
-import { IStudent } from '../interfaces/IStudent';
 
-const StudentSchema = new mongoose.Schema<IStudent>({
+const StudentSchema = new mongoose.Schema({
   names: {
     type: String,
     required: true
@@ -10,19 +9,9 @@ const StudentSchema = new mongoose.Schema<IStudent>({
     type: String,
     required: true
   },
-  dateOfBirth: {
-    type: Date,
-    required: true
-  },
-  type_document: {
-    type: String,
-    required: true,
-    enum: ['DNI', 'PASSPORT'],
-    default: 'DNI'
-  },
-  document: {
-    type: String,
-    required: true
+  assignation:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Assignation'
   }
 });
 StudentSchema.set('collection', 'students');

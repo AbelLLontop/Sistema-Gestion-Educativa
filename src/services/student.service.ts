@@ -1,4 +1,4 @@
-import { IStudent, IStudentCreate, IStudentUpdate } from '../interfaces/IStudent';
+import { IStudent, IStudentCreate, IStudentUpdate } from '../interfaces/IStudent.interface';
 import Student from '../model/Student.model';
 
 class StudentService {

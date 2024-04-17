@@ -1,17 +1,16 @@
 import mongoose from 'mongoose';
+import { IArea } from '../interfaces/IArea.interface';
 
-const AreaSchema = new mongoose.Schema({
+const AreaSchema = new mongoose.Schema<IArea>({
   name: {
     type: String
   },
-  academic_period: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'AcademicPeriod'
-  },
   competences: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Competence'
+      _id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Competence'
+      },
     }
   ]
 });
