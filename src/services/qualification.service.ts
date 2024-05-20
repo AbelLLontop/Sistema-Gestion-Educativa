@@ -1,20 +1,20 @@
-import { IQualification, IQualificationCreate, IQualificationUpdate } from '../interfaces/IQualification.interface';
+import {  IQualificationCreate, IQualificationUpdate } from '../interfaces/IQualification.interface';
 import Qualification from '../model/Qualification.model';
 
 class QualificationService {
-  async getQualification(): Promise<IQualification[]> {
+  async getQualification() {
     const qualifications = await Qualification.find();
     return qualifications;
   }
-  async createQualification(qualification: IQualificationCreate): Promise<IQualification> {
+  async createQualification(qualification: IQualificationCreate) {
     const newQualification = new Qualification(qualification);
     return await newQualification.save();
   }
-  async updateQualification(id: string, qualification: IQualificationUpdate): Promise<IQualification | null> {
+  async updateQualification(id: string, qualification: IQualificationUpdate) {
     const updatedQualification = await Qualification.findByIdAndUpdate(id, qualification);
     return updatedQualification;
   }
-  async deleteQualification(id: string): Promise<IQualification | null> {
+  async deleteQualification(id: string){
     const qualification = await Qualification.findByIdAndDelete(id);
     return qualification;
   }

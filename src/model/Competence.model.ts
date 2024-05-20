@@ -2,16 +2,8 @@ import mongoose from 'mongoose';
 import { ICompetence } from '../interfaces/ICompetence.interface';
 
 const CompetenceSchema = new mongoose.Schema<ICompetence>({
-  periodo:{
-    _id:{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Periodo'
-    },
-    name:{
-      type: String
-    }
-  },
-  name: {
+  periodo: String,
+  descripcion: {
     type: String
   },
   code: {

@@ -6,35 +6,13 @@ const QualificationSchema = new mongoose.Schema<IQualification>({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Student'
   },
-  grade: String,
-  section: String,
-  notas:[
-    {
-        area:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Area'
-        },
-        competences:[
-            {
-                competence:{
-                    type:mongoose.Schema.Types.ObjectId,
-                    ref:'Competence'
-                },
-                periodo:{
-                    type:mongoose.Schema.Types.ObjectId,
-                    ref:'Periodo'
-                },
-                nota:{
-                    type:Number
-                }
-            }
-        ],
-        promedio:{
-            type:Number
-        }
-    }
-  ]
-
+  competencia:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Competence'
+  },
+  score:{
+    type: Number
+  }
 });
 
 QualificationSchema.set('collection', 'qualifications');

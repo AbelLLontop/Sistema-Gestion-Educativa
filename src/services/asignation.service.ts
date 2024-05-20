@@ -1,20 +1,20 @@
-import { IAsignation, IAsignationCreate, IAsignationUpdate } from '../interfaces/IAsignation.interface';
+import {  IAsignationCreate, IAsignationUpdate } from '../interfaces/IAsignation.interface';
 import Asignation from '../model/Asignation.model';
 
 class AsignationService {
-  async getAsignation(): Promise<IAsignation[]> {
+  async getAsignation() {
     const asignations = await Asignation.find();
     return asignations;
   }
-  async createAsignation(asignation: IAsignationCreate): Promise<IAsignation> {
+  async createAsignation(asignation: IAsignationCreate) {
     const newAsignation = new Asignation(asignation);
     return await newAsignation.save();
   }
-  async updateAsignation(id: string, asignation: IAsignationUpdate): Promise<IAsignation | null> {
+  async updateAsignation(id: string, asignation: IAsignationUpdate) {
     const updatedAsignation = await Asignation.findByIdAndUpdate(id, asignation);
     return updatedAsignation;
   }
-  async deleteAsignation(id: string): Promise<IAsignation | null> {
+  async deleteAsignation(id: string){
     const asignation = await Asignation.findByIdAndDelete(id);
     return asignation;
   }

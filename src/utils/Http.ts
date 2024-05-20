@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
+import { Request as RequestExpress, Response as ResponseExpress } from 'express';
 
-export type RequestBody<B = {}> = Request<{}, {}, B>;
-export type RequestParams<Params = {}> = Request<Params, {}, {}>;
-export type RequestQuery<Query = {}> = Request<{}, {}, {}, Query>;
-export type RequestAll<Body = {}, Params = {}, Query = {}> = Request<Params, {}, Body, Query>;
-export type ResponseEntity<T = {}> = Response<T>;
+export type Request<Body = {}, Query = {}> = RequestExpress<IId, {}, Body, Query>;
+export type Response<T = {}> = ResponseExpress<T>;
+interface IId{
+    id: string;
+}

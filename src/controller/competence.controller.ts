@@ -1,18 +1,17 @@
-import { IId } from '../interfaces/global.interface';
 import { ICompetenceCreate, ICompetenceUpdate } from '../interfaces/ICompetence.interface';
 import CompetenceService from '../services/competence.service';
-import { RequestAll, RequestBody, RequestParams, ResponseEntity } from '../utils/Http';
+import { Request, Response } from '../utils/Http';
 
-export async function getCompetences(req: RequestBody, res: ResponseEntity) {
+export async function getCompetences(req: Request, res: Response) {
   const Competences = await CompetenceService.getCompetence();
   res.json(Competences);
 }
-export async function createCompetence(req: RequestBody<ICompetenceCreate>, res: ResponseEntity) {
+export async function createCompetence(req: Request<ICompetenceCreate>, res: Response) {
   const Competence = await CompetenceService.createCompetence(req.body);
   res.json(Competence);
 }
 
-export async function updateCompetence(req: RequestAll<ICompetenceUpdate, IId>, res: ResponseEntity) {
+export async function updateCompetence(req: Request<ICompetenceUpdate>, res: Response) {
   const { id } = req.params;
   const updatedCompetence = await CompetenceService.updateCompetence(id, req.body);
   if (!updatedCompetence) {
@@ -22,7 +21,7 @@ export async function updateCompetence(req: RequestAll<ICompetenceUpdate, IId>, 
   res.json(updatedCompetence);
 }
 
-export async function deleteCompetence(req: RequestParams<IId>, res: ResponseEntity) {
+export async function deleteCompetence(req: Request, res: Response) {
   const { id } = req.params;
   const Competence = await CompetenceService.deleteCompetence(id);
   if (!Competence) {

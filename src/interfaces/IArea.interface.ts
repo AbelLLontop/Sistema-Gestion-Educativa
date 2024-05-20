@@ -3,6 +3,10 @@ export interface IAreaCreate extends IArea {}
 export interface IAreaUpdate extends Partial<IArea> {}
 
 export interface IArea {
-    name: string;
-    competences: any[];
+    nombre: string;
+    competencias: [{
+        codigo: string;
+        descripcion: string;
+        periodo:string;
+    }]
 }

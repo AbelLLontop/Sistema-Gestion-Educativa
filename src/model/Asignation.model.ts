@@ -6,14 +6,12 @@ const AssignationSchema = new mongoose.Schema<IAsignation>({
   section: String,
   areas: [
     {
-      _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Area'
-      },
-      name: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Area'
     }
   ]
 });
 AssignationSchema.set('collection', 'assignations');
 const Assignation = mongoose.model('Assignation', AssignationSchema);
 export default Assignation;
+ 

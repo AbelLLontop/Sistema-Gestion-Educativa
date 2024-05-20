@@ -2,15 +2,13 @@ import mongoose from 'mongoose';
 import { IArea } from '../interfaces/IArea.interface';
 
 const AreaSchema = new mongoose.Schema<IArea>({
-  name: {
+  nombre: {
     type: String
   },
-  competences: [
+  competencias: [
     {
-      _id:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Competence'
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Competence'
     }
   ]
 });

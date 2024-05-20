@@ -4,6 +4,7 @@ export interface ICompetenceUpdate extends Partial<ICompetence> {}
 
 export interface ICompetence{
     periodo:any,
-    name: string;
-    code: string;   
+    descripcion: string;
+    code: string; 
+    area:any;  
 }

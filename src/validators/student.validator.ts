@@ -1,6 +1,5 @@
 import Joi from 'joi';
 import { IStudentCreate } from '../interfaces/IStudent.interface';
-import { typeDocumentValidator } from './globals.validator';
 import { JoiSchema } from '../utils/validator';
 
 export const studentCreateValidator: JoiSchema<IStudentCreate> = {

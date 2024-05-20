@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import { IEducationalInstitution } from '../interfaces/IEducationalInstitution.interface';
 
-
 const EducationalInstitutionSchema = new mongoose.Schema<IEducationalInstitution>({
   ie: {
     type: String
@@ -17,7 +16,7 @@ const EducationalInstitutionSchema = new mongoose.Schema<IEducationalInstitution
   },
   ugel: {
     type: String
-  },
+  }
 });
 
 EducationalInstitutionSchema.set('collection', 'educationalInstitutions');

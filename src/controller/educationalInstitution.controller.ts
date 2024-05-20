@@ -1,18 +1,17 @@
-import { IId } from '../interfaces/global.interface';
 import { IEducationalInstitutionCreate, IEducationalInstitutionUpdate } from '../interfaces/IEducationalInstitution.interface';
 import EducationalInstitutionService from '../services/educationalInstitution.service';
-import { RequestAll, RequestBody, RequestParams, ResponseEntity } from '../utils/Http';
+import { Request, Response } from '../utils/Http';
 
-export async function getEducationalInstitutions(req: RequestBody, res: ResponseEntity) {
+export async function getEducationalInstitutions(req: Request, res: Response) {
   const EducationalInstitutions = await EducationalInstitutionService.getEducationalInstitution();
   res.json(EducationalInstitutions);
 }
-export async function createEducationalInstitution(req: RequestBody<IEducationalInstitutionCreate>, res: ResponseEntity) {
+export async function createEducationalInstitution(req: Request<IEducationalInstitutionCreate>, res: Response) {
   const EducationalInstitution = await EducationalInstitutionService.createEducationalInstitution(req.body);
   res.json(EducationalInstitution);
 }
 
-export async function updateEducationalInstitution(req: RequestAll<IEducationalInstitutionUpdate, IId>, res: ResponseEntity) {
+export async function updateEducationalInstitution(req: Request<IEducationalInstitutionUpdate>, res: Response) {
   const { id } = req.params;
   const updatedEducationalInstitution = await EducationalInstitutionService.updateEducationalInstitution(id, req.body);
   if (!updatedEducationalInstitution) {
@@ -22,7 +21,7 @@ export async function updateEducationalInstitution(req: RequestAll<IEducationalI
   res.json(updatedEducationalInstitution);
 }
 
-export async function deleteEducationalInstitution(req: RequestParams<IId>, res: ResponseEntity) {
+export async function deleteEducationalInstitution(req: Request, res: Response) {
   const { id } = req.params;
   const EducationalInstitution = await EducationalInstitutionService.deleteEducationalInstitution(id);
   if (!EducationalInstitution) {

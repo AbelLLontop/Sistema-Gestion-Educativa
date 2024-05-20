@@ -1,3 +1,5 @@
+import { ICredentials } from "./ICredentials";
+
 export interface ICredentialsRegister {
   document: string;
   type_document: string;
@@ -5,9 +7,8 @@ export interface ICredentialsRegister {
   password: string;
 }
 
-export interface ICredentialsLogin {
-  email: string;
-  password: string;
+export interface ICredentialsLogin extends Partial<ICredentials>{
+  
 }
 
 export interface LoginResponse {

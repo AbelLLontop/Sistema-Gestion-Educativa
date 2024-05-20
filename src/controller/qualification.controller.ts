@@ -1,18 +1,17 @@
-import { IId } from '../interfaces/global.interface';
 import { IQualificationCreate, IQualificationUpdate } from '../interfaces/IQualification.interface';
 import QualificationService from '../services/qualification.service';
-import { RequestAll, RequestBody, RequestParams, ResponseEntity } from '../utils/Http';
+import { Request, Response } from '../utils/Http';
 
-export async function getQualifications(req: RequestBody, res: ResponseEntity) {
+export async function getQualifications(req: Request, res: Response) {
   const Qualifications = await QualificationService.getQualification();
   res.json(Qualifications);
 }
-export async function createQualification(req: RequestBody<IQualificationCreate>, res: ResponseEntity) {
+export async function createQualification(req: Request<IQualificationCreate>, res: Response) {
   const Qualification = await QualificationService.createQualification(req.body);
   res.json(Qualification);
 }
 
-export async function updateQualification(req: RequestAll<IQualificationUpdate, IId>, res: ResponseEntity) {
+export async function updateQualification(req: Request<IQualificationUpdate>, res: Response) {
   const { id } = req.params;
   const updatedQualification = await QualificationService.updateQualification(id, req.body);
   if (!updatedQualification) {
@@ -22,7 +21,7 @@ export async function updateQualification(req: RequestAll<IQualificationUpdate, 
   res.json(updatedQualification);
 }
 
-export async function deleteQualification(req: RequestParams<IId>, res: ResponseEntity) {
+export async function deleteQualification(req: Request, res: Response) {
   const { id } = req.params;
   const Qualification = await QualificationService.deleteQualification(id);
   if (!Qualification) {

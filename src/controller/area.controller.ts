@@ -1,18 +1,18 @@
-import { IId } from '../interfaces/global.interface';
 import { IAreaCreate, IAreaUpdate } from '../interfaces/IArea.interface';
 import AreaService from '../services/area.service';
-import { RequestAll, RequestBody, RequestParams, ResponseEntity } from '../utils/Http';
+import { Request, Response } from '../utils/Http';
 
-export async function getAreas(req: RequestBody, res: ResponseEntity) {
+export async function getAreas(req: Request, res: Response) {
   const Areas = await AreaService.getArea();
   res.json(Areas);
 }
-export async function createArea(req: RequestBody<IAreaCreate>, res: ResponseEntity) {
+
+export async function createArea(req: Request<IAreaCreate>, res: Response) {
   const Area = await AreaService.createArea(req.body);
   res.json(Area);
 }
 
-export async function updateArea(req: RequestAll<IAreaUpdate, IId>, res: ResponseEntity) {
+export async function updateArea(req: Request<IAreaUpdate>, res: Response) {
   const { id } = req.params;
   const updatedArea = await AreaService.updateArea(id, req.body);
   if (!updatedArea) {
@@ -22,7 +22,7 @@ export async function updateArea(req: RequestAll<IAreaUpdate, IId>, res: Respons
   res.json(updatedArea);
 }
 
-export async function deleteArea(req: RequestParams<IId>, res: ResponseEntity) {
+export async function deleteArea(req: Request, res: Response) {
   const { id } = req.params;
   const Area = await AreaService.deleteArea(id);
   if (!Area) {

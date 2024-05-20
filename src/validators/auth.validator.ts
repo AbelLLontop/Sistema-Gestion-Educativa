@@ -1,16 +1,20 @@
 import Joi from 'joi';
-import { emailValidator, typeDocumentValidator } from './globals.validator';
 import { JoiSchema } from '../utils/validator';
-import { ICredentialsLogin, ICredentialsRegister } from '../interfaces/IAuth.interface';
+import { AuthLoginDTO, AuthRegisterDTO} from '../model/dto/AuthDto';
 
-export const credentialsLoginValidator: JoiSchema<ICredentialsLogin> = {
-  email: emailValidator.required(),
+export const credentialsLoginValidator: JoiSchema<AuthLoginDTO> = {
+  email: Joi.string().email().required(),
   password: Joi.string().required()
 };
 
-export const credentialsRegisterValidator: JoiSchema<ICredentialsRegister> = {
-  document: Joi.string().required(),
-  type_document: typeDocumentValidator.required(),
-  email: emailValidator.required(),
-  password: Joi.string().required()
+export const credentialsRegisterValidator: JoiSchema<AuthRegisterDTO> = {
+  apellidos:Joi.string().required(),
+  correo:Joi.string().email().required(),
+  fecha_nacimiento:Joi.date().iso(),
+  password:Joi.string().required(),
+  nombres:Joi.string().required(),
+  nro_documento:Joi.string().required(),
+  confirm_password:Joi.string().valid(Joi.ref("password")).required().messages({
+    "any.only":"Las contraseñas deben coincidir"
+  })
 };
