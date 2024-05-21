@@ -11,6 +11,11 @@ const StudentSchema = new mongoose.Schema<IStudent>(
       type: String,
       required: true
     },
+    codigo:{
+      type:String,
+      required:true,
+      unique:true
+    },
     status: {
       type: Boolean,
       required: true,

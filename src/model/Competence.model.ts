@@ -2,12 +2,9 @@ import mongoose from 'mongoose';
 import { ICompetence } from '../interfaces/ICompetence.interface';
 
 const CompetenceSchema = new mongoose.Schema<ICompetence>({
-  periodo: String,
   descripcion: {
-    type: String
-  },
-  code: {
-    type: String
+    type: String,
+    required: true
   }
 });
 

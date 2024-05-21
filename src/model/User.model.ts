@@ -6,6 +6,7 @@ const CredentialSchema = new mongoose.Schema<ICredentials>(
   {
     email: {
       type: String,
+      unique:true,
       required: true
     },
     password: {
@@ -37,7 +38,8 @@ const UserSchema = new mongoose.Schema<IUser>(
     },
     correo: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
     fecha_nacimiento: {
       type: Date,
