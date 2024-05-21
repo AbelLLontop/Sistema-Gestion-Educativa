@@ -1,22 +1,15 @@
 import { IStudentCreate, IStudentUpdate } from '../interfaces/IStudent.interface';
+import { StudentCreateDto } from '../model/dto/StudentDto';
 import Student from '../model/Student.model';
 
 class StudentService {
   async getStudent() {
-    const students = await Student.find();
+    const students = await Student.find({status:true});
     return students;
   }
-  async createStudent(student: IStudentCreate){
+  async createStudent(student: StudentCreateDto){
     const newStudent = new Student(student);
     return await newStudent.save();
-  }
-  async updateStudent(id: string, student: IStudentUpdate) {
-    const updatedStudent = await Student.findByIdAndUpdate(id, student);
-    return updatedStudent;
-  }
-  async deleteStudent(id: string) {
-    const student = await Student.findByIdAndDelete(id);
-    return student;
   }
 }
 

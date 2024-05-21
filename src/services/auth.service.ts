@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { AuthLoginDTO, AuthRegisterDTO } from '../model/dto/AuthDto';
 import User from '../model/User.model';
 import ApplicationError from '../utils/CustomError';
@@ -27,7 +28,7 @@ class AuthService {
     });
     if (foundUser) {
       throw new ApplicationError('Ya existe una cuenta asociada a este correo o número de documento. Por favor, intenta con otro correo o número de documento.');
-    }
+    }    
     const encryptPassword = await encrypt.encrypt(auth.password);
     const new_user = new User({
       ...auth,
