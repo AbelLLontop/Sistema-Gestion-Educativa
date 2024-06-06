@@ -11,7 +11,9 @@ const CompetenceSchema = new mongoose.Schema<ICompetence>({
 
 const AreaSchema = new mongoose.Schema<IArea>({
   nombre: {
-    type: String
+    type: String,
+    unique:true,
+    required: true
   },
   competencias: [
     {
