@@ -15,12 +15,6 @@ const AreaSchema = new mongoose.Schema<IArea>({
     unique:true,
     required: true
   },
-  competencias: [
-    {
-      type: CompetenceSchema,
-      default: []
-    }
-  ],
   status: {
     type: Boolean,
     default: true,

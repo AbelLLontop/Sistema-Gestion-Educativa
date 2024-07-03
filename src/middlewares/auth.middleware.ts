@@ -9,6 +9,6 @@ export const authTokenMiddleware = async (req: Request, res: Response, next: Nex
     console.log(data);
     next();
   } catch (err) {
-    return res.status(400).json({ message: 'Invalid Token' });
+    return res.status(400).json({ message: 'Invalid Token',error: true, type: 'TOKEN INVALID',});
   }
 };
