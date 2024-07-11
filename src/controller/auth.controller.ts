@@ -1,4 +1,4 @@
-import { AuthLoginDTO, AuthRegisterDTO } from '../model/dto/AuthDto';
+import { AuthLoginDTO, AuthRegisterDTO } from '../dto/AuthDto';
 import authService from '../services/auth.service';
 import { Request, Response } from '../utils/Http';
 

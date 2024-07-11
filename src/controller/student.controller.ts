@@ -1,4 +1,4 @@
-import { StudentCreateDto } from '../model/dto/StudentDto';
+import { StudentCreateDto } from '../dto/StudentDto';
 import studentService from '../services/student.service';
 import { Request, Response } from '../utils/Http';
 

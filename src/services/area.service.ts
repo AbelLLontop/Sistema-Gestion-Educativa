@@ -1,5 +1,6 @@
 import Area from '../model/Area.model';
-import { AreaCreateDto } from '../model/dto/AreaDto';
+import { AreaCreateDto } from '../dto/AreaDto';
+import ApplicationError from '../utils/CustomError';
 
 class AreaService {
   async getArea() {
@@ -17,15 +18,22 @@ class AreaService {
   }
   async createArea(area: AreaCreateDto){
     area.nombre = area.nombre.toUpperCase();
+    const findArea = await Area.findOne({nombre:area.nombre});
+    if(findArea) throw new ApplicationError('El area ya existe')
     const newArea = new Area(area);
     return await newArea.save();
   }
-  async createMultipleAreas(areas: AreaCreateDto[]){
-    areas = areas.map(area => {
-      area.nombre = area.nombre.toUpperCase();
-      return area;
-    });
-    return await Area.insertMany(areas);
+  async createMultipleArea(multipleString: string){
+    const areasInserts = [];
+    const areas = multipleString.split(',').map(area=>area.trim()).map(area=>({nombre:area.toUpperCase()}));
+    for(const area of areas){
+      const findArea = await Area.findOne({nombre:area.nombre});
+      if(!findArea){
+        const newArea = await Area.create(area);
+        areasInserts.push(newArea);
+      } 
+    }
+    return areasInserts;
   }
 }
 

@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { JoiSchema } from '../utils/validator';
-import { AuthLoginDTO, AuthRegisterDTO} from '../model/dto/AuthDto';
+import { AuthLoginDTO, AuthRegisterDTO} from '../dto/AuthDto';
 
 export const credentialsLoginValidator: JoiSchema<AuthLoginDTO> = {
   email: Joi.string().email().max(100).required(),

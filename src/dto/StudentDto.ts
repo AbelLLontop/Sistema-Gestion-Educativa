@@ -1,4 +1,4 @@
-import { IStudent } from "../../interfaces/IStudent.interface";
+import { IStudent } from "../interfaces/IStudent.interface";
 
 export interface StudentCreateDto extends Omit<IStudent, 'status'> {
 }

@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { JoiSchema } from '../utils/validator';
-import { StudentCreateDto } from '../model/dto/StudentDto';
+import { StudentCreateDto } from '../dto/StudentDto';
 
 export const studentCreateValidator: JoiSchema<StudentCreateDto> = {
   apellidos: Joi.string().required().max(50),

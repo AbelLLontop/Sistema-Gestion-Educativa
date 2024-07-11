@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { AuthLoginDTO, AuthRegisterDTO } from '../model/dto/AuthDto';
+import { AuthLoginDTO, AuthRegisterDTO } from '../dto/AuthDto';
 import User from '../model/User.model';
 import ApplicationError from '../utils/CustomError';
 import encrypt from '../utils/encrypt';

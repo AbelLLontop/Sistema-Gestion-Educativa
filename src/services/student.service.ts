@@ -1,5 +1,5 @@
 import { IStudentCreate, IStudentUpdate } from '../interfaces/IStudent.interface';
-import { StudentCreateDto } from '../model/dto/StudentDto';
+import { StudentCreateDto } from '../dto/StudentDto';
 import Student from '../model/Student.model';
 
 class StudentService {
